@@ -7,8 +7,8 @@ from .serializers import EmployeeSerializer, DepartmentSerializer, PositionSeria
 class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['name', 'position__name', 'department__name', 'status__name']
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['name', 'department__name', 'position__name', 'status__name']
 
 class DepartmentViewSet(viewsets.ModelViewSet):
     queryset = Department.objects.all()
